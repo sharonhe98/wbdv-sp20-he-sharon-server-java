@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class TopicService {
 
     @Autowired
@@ -27,7 +28,8 @@ public class TopicService {
 
     // TODO: delete topic
     public int deleteTopic(int tid) {
-        return 1;
+        topicRepository.deleteTopic(tid);
+        return 0;
     }
 
     public int updateTopic(int tid, Topic newTopic) {

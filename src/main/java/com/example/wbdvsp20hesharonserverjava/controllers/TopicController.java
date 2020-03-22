@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:8080")
+@CrossOrigin(origins = "*")
 public class TopicController {
 
     @Autowired
@@ -50,7 +50,9 @@ public class TopicController {
     @GetMapping("/lessons/{lid}/topics")
     public List<Topic> findTopicsForLesson(
             @PathVariable("lid") String lessonId) {
-        return service.findTopicsForLesson(lessonId);
+        List<Topic> topics = service.findTopicsForLesson(lessonId);
+        System.out.println(topics);
+        return topics;
     }
 
 //    @GetMapping("/w1")

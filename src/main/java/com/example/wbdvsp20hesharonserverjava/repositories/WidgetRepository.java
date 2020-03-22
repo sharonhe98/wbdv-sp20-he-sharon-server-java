@@ -21,9 +21,7 @@ public interface WidgetRepository
 
     // "SELECT * FROM widgets WHERE topic_id=topicId
 //    @Query(value = "SELECT * FROM widgets WHERE topic_id=:tid", nativeQuery = true)
-    @Query("select widget from Widget widget where widget.topic.id=:tid")
+    @Query(value="SELECT * from widgets where widgets.topic_id=:tid", nativeQuery = true)
     public List<Widget> findWidgetsForTopic(
             @Param("tid") int topicId);
-
-    void deleteById(Integer widgetId);
 }

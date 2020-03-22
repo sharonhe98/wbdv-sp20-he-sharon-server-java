@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class WidgetService {
 
     @Autowired
@@ -38,8 +39,7 @@ public class WidgetService {
     }
 
     public List<Widget> findWidgetsForTopic(int topicId) {
-        return new ArrayList<Widget>();
-        //return widgetRepository.findWidgetsForTopic(topicId);
+        return widgetRepository.findWidgetsForTopic(topicId);
     }
 
     public Widget findWidgetById(int wid) {
