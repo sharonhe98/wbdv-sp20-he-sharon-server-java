@@ -1,6 +1,7 @@
 package com.example.wbdvsp20hesharonserverjava.controllers;
 
 import com.example.wbdvsp20hesharonserverjava.models.Widget;
+import com.example.wbdvsp20hesharonserverjava.services.TopicService;
 import com.example.wbdvsp20hesharonserverjava.services.WidgetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -14,11 +15,15 @@ public class WidgetController {
     @Autowired
     WidgetService service = new WidgetService();
 
+    @Autowired
+    TopicService topicService = new TopicService();
+
     @PostMapping("/topics/{tid}/widgets")
     public Widget createWidget(
             @PathVariable("tid")
             int tid, @RequestBody Widget newWidget) {
-        return service.createWidget(tid, newWidget);
+        System.out.println("CREATE WIDGET CONTROLLER");
+        return topicService.createWidgetForTopic(tid, newWidget);
     }
 
     @DeleteMapping("/widgets/{widgetId}")

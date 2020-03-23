@@ -28,7 +28,11 @@ public class TopicService {
 
     // TODO: delete topic
     public int deleteTopic(int tid) {
-        topicRepository.deleteTopic(tid);
+        Topic topic = topicRepository.findTopicById(tid);
+        for (int i = 0; i < topic.getWidgets().size(); i++) {
+            widgetRepository.deleteById(topic.getWidgets().get(i).getId());
+        }
+        topicRepository.deleteById(tid);
         return 0;
     }
 
@@ -43,7 +47,7 @@ public class TopicService {
     public Widget createWidgetForTopic(
             Integer tid,
             Widget newWidget) {
-        Topic topic = topicRepository.findById(tid).get();
+        Topic topic = topicRepository.findTopicById(tid);
         newWidget.setTopic(topic);
         return widgetRepository.save(newWidget);
     }

@@ -17,11 +17,7 @@ public interface TopicRepository extends CrudRepository<Topic, Integer>{
     List<Topic> findTopicsForLesson
             (@Param("lessonId") String lessonId);
 
-    @Query(value = "SELECT topic FROM topics WHERE topic.id=:topicId", nativeQuery = true)
+    @Query(value = "SELECT * FROM topics WHERE topics.id=:topicId", nativeQuery = true)
     Topic findTopicById
-            (@Param("topicId") int topicId);
-
-    @Query(value = "DELETE topic FROM topics WHERE topic.id=:topicId", nativeQuery = true)
-    int deleteTopic
             (@Param("topicId") int topicId);
 }
