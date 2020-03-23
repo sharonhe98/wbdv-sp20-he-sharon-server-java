@@ -1,5 +1,7 @@
 package com.example.wbdvsp20hesharonserverjava.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -13,6 +15,7 @@ public class Widget {
     private String text = "New Widget";
     private int size = 2;
 
+    @JsonIgnore
     @ManyToOne
     private Topic topic;
 
