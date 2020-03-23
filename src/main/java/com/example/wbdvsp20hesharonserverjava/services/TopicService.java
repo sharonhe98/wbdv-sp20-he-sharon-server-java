@@ -37,6 +37,9 @@ public class TopicService {
     }
 
     public int updateTopic(int tid, Topic newTopic) {
+        List<Widget> widgets = widgetRepository.findWidgetsForTopic(tid);
+        newTopic.setWidgets(widgets);
+        topicRepository.save(newTopic);
         return 1;
     }
 
@@ -45,7 +48,7 @@ public class TopicService {
     }
 
     public Widget createWidgetForTopic(
-            Integer tid,
+            int tid,
             Widget newWidget) {
         Topic topic = topicRepository.findTopicById(tid);
         newWidget.setTopic(topic);
