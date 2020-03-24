@@ -18,7 +18,7 @@ public class WidgetController {
     @Autowired
     TopicService topicService = new TopicService();
 
-    @PostMapping("/topics/{tid}/widgets")
+    @PostMapping("/api/topics/{tid}/widgets")
     public Widget createWidget(
             @PathVariable("tid")
             int tid, @RequestBody Widget newWidget) {
@@ -26,31 +26,31 @@ public class WidgetController {
         return topicService.createWidgetForTopic(tid, newWidget);
     }
 
-    @DeleteMapping("/widgets/{widgetId}")
+    @DeleteMapping("/api/widgets/{widgetId}")
     public int deleteWidget(
             @PathVariable("widgetId") int wid) {
         return service.deleteWidget(wid);
     }
 
-    @PutMapping("/widgets/{widgetId}")
+    @PutMapping("/api/widgets/{widgetId}")
     public int updateWidget(
             @PathVariable("widgetId") int wid,
             @RequestBody Widget updatedWidget) {
         return service.updateWidget(wid, updatedWidget);
     }
 
-    @GetMapping("/widgets/{widgetId}")
+    @GetMapping("/api/widgets/{widgetId}")
     public Widget findWidgetById(
             @PathVariable("widgetId") int wid) {
         return service.findWidgetById(wid);
     }
 
-    @GetMapping("/widgets")
+    @GetMapping("/api/widgets")
     public List<Widget> findAllWidgets() {
         return service.findAllWidgets();
     }
 
-    @GetMapping("/topics/{tid}/widgets")
+    @GetMapping("/api/topics/{tid}/widgets")
     public List<Widget> findWidgetsForTopic(
             @PathVariable("tid") int topicId) {
         return service.findWidgetsForTopic(topicId);

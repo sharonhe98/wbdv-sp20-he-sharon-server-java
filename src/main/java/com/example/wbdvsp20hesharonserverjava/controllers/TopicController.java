@@ -14,20 +14,20 @@ public class TopicController {
     @Autowired
     TopicService service = new TopicService();
 
-    @PostMapping("/lessons/{lid}/topics")
+    @PostMapping("/api/lessons/{lid}/topics")
     public Topic createTopic(
             @PathVariable("lid")
                     String lid, @RequestBody Topic newTopic) {
         return service.createTopic(lid, newTopic);
     }
 
-    @DeleteMapping("/topics/{topicId}")
+    @DeleteMapping("/api/topics/{topicId}")
     public int deleteTopic(
             @PathVariable("topicId") int tid) {
         return service.deleteTopic(tid);
     }
 
-    @PutMapping("/topics/{topicId}")
+    @PutMapping("/api/topics/{topicId}")
     public int updateTopic(
             @PathVariable("topicId") int tid,
             @RequestBody Topic updatedTopic) {
@@ -36,18 +36,18 @@ public class TopicController {
         return service.updateTopic(tid, updatedTopic);
     }
 
-    @GetMapping("/topics/{topicId}")
+    @GetMapping("/api/topics/{topicId}")
     public Topic findTopicById(
             @PathVariable("topicId") int tid) {
         return service.findTopicById(tid);
     }
 
-    @GetMapping("/topics")
+    @GetMapping("/api/topics")
     public List<Topic> findAllTopics() {
         return service.findAllTopics();
     }
 
-    @GetMapping("/lessons/{lid}/topics")
+    @GetMapping("/api/lessons/{lid}/topics")
     public List<Topic> findTopicsForLesson(
             @PathVariable("lid") String lessonId) {
         List<Topic> topics = service.findTopicsForLesson(lessonId);
